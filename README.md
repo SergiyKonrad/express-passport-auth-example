@@ -17,7 +17,7 @@ This project is an **Express.js server** with user authentication functionality 
 1. Clone the repository:
 
     ```
-    git clone <repository_url>
+    git clone https://github.com/SergiyKonrad/express-passport-auth-example.git
     ```
 
 2. Navigate to the project directory:
@@ -49,8 +49,6 @@ This project is an **Express.js server** with user authentication functionality 
     npm run dev
     ```
 
----
-
 ## Routes and Endpoints
 
 ### 1. **User Registration**
@@ -68,8 +66,6 @@ This project is an **Express.js server** with user authentication functionality 
     -   `201 Created`: If registration is successful.
     -   `400 Bad Request`: If the user already exists.
 
----
-
 ### 2. **User Login**
 
 -   **Route**: `/auth/login`
@@ -85,8 +81,6 @@ This project is an **Express.js server** with user authentication functionality 
     -   Redirects to `/protected` on successful login.
     -   Redirects to `/auth/login-failed` on failed login.
 
----
-
 ### 3. **Protected Route**
 
 -   **Route**: `/protected`
@@ -96,8 +90,6 @@ This project is an **Express.js server** with user authentication functionality 
 -   **Response**:
     -   `200 OK`: Returns a message and the authenticated user.
     -   `401 Unauthorized`: If the user is not logged in.
-
----
 
 ### 4. **Login Failure**
 
@@ -109,8 +101,6 @@ This project is an **Express.js server** with user authentication functionality 
         "message": "Login failed"
     }
     ```
-
----
 
 ### 5. **Logout**
 
@@ -124,8 +114,6 @@ This project is an **Express.js server** with user authentication functionality 
     }
     ```
 
----
-
 ## Technologies Used
 
 -   **Node.js**: Runtime environment
@@ -134,8 +122,6 @@ This project is an **Express.js server** with user authentication functionality 
 -   **MongoDB**: Database
 -   **Mongoose**: MongoDB ODM
 -   **bcryptjs**: Password hashing
-
----
 
 ## License
 
