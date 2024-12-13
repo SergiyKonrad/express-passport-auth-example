@@ -63,16 +63,41 @@ router.get('/login-failed', (req, res) => {
     res.status(401).json({ message: 'Login failed' })
 })
 
+// Route to fetch all users
+router.get('/users', async (req, res) => {
+    try {
+        // Exclude the password field when fetching users
+        const users = await User.find().select('-password')
+        console.log(users)
+        res.status(200).json(users)
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({
+            message: 'Error fetching users',
+            error: err.message,
+        })
+    }
+})
+
 module.exports = router
 
 // // Login Route for browser-based apps
-
-// router.post(
-//   '/login',
-//   passport.authenticate('local', {
-//       successRedirect: '/protected',
-//       failureRedirect: '/auth/login-failed',
-//   }),
-// )
-
 // NB. By temporarily removing successRedirect, Passport won't attempt to perform a GET request to /protected after login.
+
+/* router.post(
+  '/login',
+  passport.authenticate('local', {
+      successRedirect: '/protected',
+      failureRedirect: '/auth/login-failed',
+  }),
+) */
+
+// ------------ URL`s
+
+// http://localhost:8080/auth/register POST
+// http://localhost:8080/auth/login    POST
+// http://localhost:8080/auth/logout   POST
+
+// http://localhost:8080/auth/users        GET all users
+// http://localhost:8080/auth/login-failed GET
+// http://localhost:8080/protected         GET
