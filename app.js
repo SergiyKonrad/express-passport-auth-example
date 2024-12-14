@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const authRoutes = require('./routes/auth')
 const authMiddleware = require('./middleware/authMiddleware')
+const dataRoutes = require('./routes/data')
 
 const app = express()
 
@@ -31,8 +32,9 @@ require('./config/passport')
 app.use(passport.initialize())
 app.use(passport.session())
 
-// Routes
+// Existing routes
 app.use('/auth', authRoutes)
+app.use('/data', dataRoutes)
 
 // Root Route
 app.get('/', (req, res) => {
