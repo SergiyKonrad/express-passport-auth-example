@@ -88,7 +88,7 @@ mongoose
 // DELETE /data/delete-many    - Delete multiple documents
 // POST   /data/read           - Retrieve documents with optional filter and projection
 
-// Statistics Routes
+// Statistics or data retrieval Routes
 // GET  /stats/cursor          - Retrieve documents using a cursor for efficient memory usage
 // GET  /stats/aggregate/stats  - Aggregate user registration statistics by date
 

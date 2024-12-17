@@ -58,7 +58,7 @@ This project is an **Express.js server** with user authentication functionality 
 
 ### Authentication Routes:
 
-### 1. **User Registration**
+#### 1. **User Registration**
 
 -   **Route**: `/auth/register`
 -   **Method**: `POST`
@@ -73,7 +73,7 @@ This project is an **Express.js server** with user authentication functionality 
     -   `201 Created`: If registration is successful.
     -   `400 Bad Request`: If the user already exists.
 
-### 2. **User Login**
+#### 2. **User Login**
 
 -   **Route**: `/auth/login`
 -   **Method**: `POST`
@@ -89,7 +89,7 @@ This project is an **Express.js server** with user authentication functionality 
     -   Redirects to `/protected` on successful login.
     -   Redirects to `/auth/login-failed` on failed login.
 
-    ### 3. **Fetch All Users**
+#### 3. **Fetch All Users**
 
 -   **Route**: `/auth/users`
 -   **Method**: `GET`
@@ -108,7 +108,7 @@ This project is an **Express.js server** with user authentication functionality 
     ]
     ```
 
-### 4. **Protected Route**
+#### 4. **Protected Route**
 
 -   **Route**: `/protected`
 -   **Method**: `GET`
@@ -118,7 +118,7 @@ This project is an **Express.js server** with user authentication functionality 
     -   `200 OK`: Returns a message and the authenticated user.
     -   `401 Unauthorized`: If the user is not logged in.
 
-### 5. **Login Failure**
+#### 5. **Login Failure**
 
 -   **Route**: `/auth/login-failed`
 -   **Method**: `GET`
@@ -129,7 +129,7 @@ This project is an **Express.js server** with user authentication functionality 
     }
     ```
 
-### 6. **Logout**
+#### 6. **Logout**
 
 -   **Route**: `/auth/logout`
 -   **Method**: `POST`
@@ -141,7 +141,7 @@ This project is an **Express.js server** with user authentication functionality 
     }
     ```
 
-### CRUD Routes
+### CRUD Routes:
 
 #### 1. **Create One Document**
 
@@ -270,7 +270,9 @@ This project is an **Express.js server** with user authentication functionality 
     }
     ```
 
-### **Iterate Documents with Cursor**
+### Statistics or Data Retrieval Routes:
+
+#### **Iterate Documents with Cursor**
 
 -   **Route**: `/data/cursor`
 -   **Method**: `GET`
@@ -294,7 +296,7 @@ This project is an **Express.js server** with user authentication functionality 
 }
 ```
 
-### **Aggregation Statistics**
+#### **Aggregation Statistics**
 
 -   **Route**: `/data/aggregate/stats`
 -   **Method**: `GET`
