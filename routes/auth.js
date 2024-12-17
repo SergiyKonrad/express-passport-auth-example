@@ -81,23 +81,16 @@ router.get('/users', async (req, res) => {
 
 module.exports = router
 
-// // Login Route for browser-based apps
+//   Login Route example for browser-based apps
+
 // NB. By temporarily removing successRedirect, Passport won't attempt to perform a GET request to /protected after login.
 
-/* router.post(
+/* 
+router.post(
   '/login',
   passport.authenticate('local', {
       successRedirect: '/protected',
       failureRedirect: '/auth/login-failed',
   }),
-) */
-
-// ------------ URL`s
-
-// http://localhost:8080/auth/register POST
-// http://localhost:8080/auth/login    POST
-// http://localhost:8080/auth/logout   POST
-
-// http://localhost:8080/auth/users        GET all users
-// http://localhost:8080/auth/login-failed GET
-// http://localhost:8080/protected         GET
+) 
+  */

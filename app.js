@@ -6,6 +6,7 @@ const passport = require('passport')
 const authRoutes = require('./routes/auth')
 const authMiddleware = require('./middleware/authMiddleware')
 const dataRoutes = require('./routes/data')
+const statisticsRoutes = require('./routes/statistics')
 
 const app = express()
 
@@ -32,9 +33,10 @@ require('./config/passport')
 app.use(passport.initialize())
 app.use(passport.session())
 
-// Existing routes
+//  Routes
 app.use('/auth', authRoutes)
 app.use('/data', dataRoutes)
+app.use('/stats', statisticsRoutes)
 
 // Root Route
 app.get('/', (req, res) => {
@@ -59,6 +61,36 @@ mongoose
         )
     })
     .catch((err) => console.error('Database connection error:', err))
+
+// ------------ Available Routes ------------
+
+// Authentication Routes
+// POST  /auth/register    - Register a new user
+// POST  /auth/login       - Authenticate user and log in
+// POST  /auth/logout      - Log out user and destroy session
+
+// User Routes
+// GET  /auth/users   - Fetch all users (excludes sensitive data)
+
+// Error Routes
+// GET  /auth/login-failed  - Login failure response
+
+// Protected Routes (app.js)
+// GET  /protected    - Access secure route (requires authentication)
+
+// Data Routes
+// POST   /data/create         - Create one document
+// POST   /data/create-many    - Create multiple documents
+// PUT    /data/update         - Update one document
+// PUT    /data/update-many    - Update multiple documents
+// PUT    /data/replace        - Replace a single document
+// DELETE /data/delete         - Delete one document
+// DELETE /data/delete-many    - Delete multiple documents
+// POST   /data/read           - Retrieve documents with optional filter and projection
+
+// Statistics Routes
+// GET  /stats/cursor          - Retrieve documents using a cursor for efficient memory usage
+// GET  /stats/aggregate/stats  - Aggregate user registration statistics by date
 
 /*
 Use Postman, Thunder Client, or your browser to test:

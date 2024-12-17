@@ -13,7 +13,9 @@ This project is an **Express.js server** with user authentication functionality 
 5. **Protected Route**: A secure route only accessible to authenticated users.
 6. **Exclude Sensitive Data**: Ensures passwords are excluded from all API responses.
 7. **Fetch All Users**: A route to fetch all users without exposing sensitive data.
-8. **Logout**: Logs out the user and destroys their session.
+8. **Iterate Data Efficiently**: Use MongoDB cursors for large datasets.
+9. **Aggregation Statistics**: Collect user registration stats grouped by date.
+10. **Logout**: Logs out the user and destroys their session.
 
 ## Installation
 
@@ -267,6 +269,48 @@ This project is an **Express.js server** with user authentication functionality 
         ]
     }
     ```
+
+### **Iterate Documents with Cursor**
+
+-   **Route**: `/data/cursor`
+-   **Method**: `GET`
+-   **Description**: Retrieves documents using a cursor for efficient memory usage.
+
+**Response**:
+
+```
+{
+    "message": "Documents retrieved using cursor",
+    "users": [
+        {
+            "email": "user1@example.com",
+            "createdAt": "2024-12-05T10:00:00.000Z"
+        },
+        {
+            "email": "user2@example.com",
+            "createdAt": "2024-12-06T14:00:00.000Z"
+        }
+    ]
+}
+```
+
+### **Aggregation Statistics**
+
+-   **Route**: `/data/aggregate/stats`
+-   **Method**: `GET`
+-   **Description**: Aggregates user registration statistics grouped by date.
+
+**Response**:
+
+```
+{
+  "message": "User registration statistics",
+  "stats": [
+    { "_id": "2024-12-05", "userCount": 10 },
+    { "_id": "2024-12-06", "userCount": 15 }
+  ]
+}
+```
 
 ## Technologies Used
 

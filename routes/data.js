@@ -143,8 +143,23 @@ router.post('/read', async (req, res) => {
             error: err.message,
         })
     }
+})
 
-    /*
+module.exports = router
+
+// I use the User.create here as User.insertOne is Native MongoDB method (not available in Mongoose).
+
+/*
+Notes:
+1. Used `toJSON` to exclude sensitive fields like `password` after `insertMany`.
+2. Added `deletedCount` in deleteMany response for better debugging.
+3. Using explicit fields in responses (e.g., `email`, `_id`) ensures consistent data exposure.
+*/
+
+// Mongoose does not automatically apply transformations (e.g., toJSON) to documents returned by create(), insertMany(), or other similar methods.
+
+/* Example: GET route with query-based filtering and projection
+
     router.get('/read', async (req, res) => {
       const filter = req.query.filter ? JSON.parse(req.query.filter) : {};
       const projection = req.query.projection ? JSON.parse(req.query.projection) : {};
@@ -161,18 +176,8 @@ router.post('/read', async (req, res) => {
           });
       }
   });
+
+Example usage:
+   GET /data/read?filter={"email":"user@example.com"}&projection={"email":1,"_id":0}
+
   */
-})
-
-module.exports = router
-
-// I use the User.create here as User.insertOne is Native MongoDB method (not available in Mongoose).
-
-/*
-Notes:
-1. Used `toJSON` to exclude sensitive fields like `password` after `insertMany`.
-2. Added `deletedCount` in deleteMany response for better debugging.
-3. Using explicit fields in responses (e.g., `email`, `_id`) ensures consistent data exposure.
-*/
-
-// Mongoose does not automatically apply transformations (e.g., toJSON) to documents returned by create(), insertMany(), or other similar methods.
