@@ -1,11 +1,13 @@
 # Express-Passport Auth Server
 
-This project is an **Express.js server** with user authentication functionality implemented using **Passport.js**. It includes user registration, login, session management, CRUD operations, and protected routes accessible only to authenticated users. Sensitive user data like passwords is excluded from all API responses.
+This project is an **Express.js server** with user authentication functionality implemented using **Passport.js**. It includes user registration, login (via static and dynamic pages), session management, CRUD operations, and protected routes accessible only to authenticated users. Sensitive user data like passwords is excluded from all API responses.
 
 ## Features
 
 1. **User Registration**: Allows users to register with their email and password.
-2. **User Login**: Authenticates users using Passport's Local Strategy.
+2. **User Login**:
+    - Static Login Page: Served via `login.html` from the `public` directory.
+    - Dynamic Login Route: Redirects to the static login page or renders a custom server-side login form.
 3. **Session Management**: Stores user sessions using `express-session` with cookies.
 4. **CRUD Operations**:
     - Create, read, update, and delete user data in MongoDB.
@@ -16,6 +18,7 @@ This project is an **Express.js server** with user authentication functionality 
 8. **Iterate Data Efficiently**: Use MongoDB cursors for large datasets.
 9. **Aggregation Statistics**: Collect user registration stats grouped by date.
 10. **Logout**: Logs out the user and destroys their session.
+11. **Static File Serving**: Automatically serves `index.html`, `login.html`, and other static files from the `public` directory.
 
 ## Installation
 
@@ -55,6 +58,21 @@ This project is an **Express.js server** with user authentication functionality 
     ```
 
 ## Routes and Endpoints
+
+### **Static and Dynamic Login**
+
+#### Static Login Page:
+
+-   **Route**: `/login.html`
+-   **Description**: Access the static login page directly.
+-   **Usage**: Visit `http://localhost:8080/login.html` in your browser.
+
+#### Dynamic Login Route:
+
+-   **Route**: `/auth/login`
+-   **Description**:
+    -   Redirects to `/login.html`.
+    -   Can be updated for server-rendered dynamic content if needed.
 
 ### Authentication Routes:
 
@@ -313,6 +331,15 @@ This project is an **Express.js server** with user authentication functionality 
   ]
 }
 ```
+
+## Accessing the App
+
+1. Visit the homepage:  
+   [http://localhost:8080/](http://localhost:8080/)
+
+2. Access the login page:
+    - **Static**: `/login.html`
+    - **Dynamic**: `/auth/login`
 
 ## Technologies Used
 
