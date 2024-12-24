@@ -1,5 +1,4 @@
 // Routes for authentication
-
 const express = require('express')
 const passport = require('passport')
 const User = require('../models/user')
@@ -46,6 +45,26 @@ router.post('/login', (req, res, next) => {
         })
     })(req, res, next)
 })
+
+// Redirect to static login page
+router.get('/login', (req, res) => {
+    res.redirect('/login.html') // Redirect to static login.html
+})
+
+// Dynamic login route (optional)
+// Uncomment if you need server-rendered content
+/*
+router.get('/login', (req, res) => {
+    res.send(`
+    <h1>Dynamic Login</h1>
+    <form action="/auth/login" method="POST">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+    </form>
+  `)
+})
+*/
 
 // Logout Route
 router.post('/logout', (req, res) => {

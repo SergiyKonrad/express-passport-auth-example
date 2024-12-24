@@ -7,8 +7,12 @@ const authRoutes = require('./routes/auth')
 const authMiddleware = require('./middleware/authMiddleware')
 const dataRoutes = require('./routes/data')
 const statisticsRoutes = require('./routes/statistics')
+const path = require('path')
 
 const app = express()
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Middleware
 app.use(express.json())
