@@ -2,7 +2,47 @@
 
 This project is an **Express.js server** with user authentication functionality implemented using **Passport.js**. It includes user registration, login (via static and dynamic pages), session management, CRUD operations, and protected routes accessible only to authenticated users. Sensitive user data like passwords is excluded from all API responses.
 
-## Features
+## Docker Support
+
+This project also includes a **Dockerfile** and a **docker-compose.yml** for containerized deployment.
+
+### Dockerfile
+
+The `Dockerfile` builds a lightweight image for the application. Key steps:
+
+-   **Base Image**: Uses `node:lts` for long-term support.
+-   **Dependencies**: Copies `package.json` and installs dependencies.
+-   **App Code**: Copies application files into the container.
+-   **Start Command**: Runs `npm start`.
+
+### docker-compose.yml
+
+The `docker-compose.yml` file defines a multi-container setup:
+
+-   **App Service**: Runs the Express.js app in a container using the `node:lts` image.
+-   **Mongo Service**: Uses the official MongoDB image to provide the database for the app.
+
+### Running with Docker
+
+#### Build the Docker Image:
+
+```
+docker-compose build
+```
+
+#### Start the Containers:
+
+```
+docker-compose up
+```
+
+#### Stop the Containers:
+
+```
+docker-compose down
+```
+
+## Features Express-Passport Auth Server:
 
 1. **User Registration**: Allows users to register with their email and password.
 2. **User Login**:
@@ -349,6 +389,7 @@ This project is an **Express.js server** with user authentication functionality 
 -   **MongoDB**: Database
 -   **Mongoose**: MongoDB ODM
 -   **bcryptjs**: Password hashing
+-   **Docker**: Containerization
 
 ## License
 
