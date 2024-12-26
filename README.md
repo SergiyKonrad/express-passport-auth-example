@@ -388,15 +388,14 @@ docker-compose down
 
 **Note:** Ensure that Docker is running and the containers are started using the following command before accessing the app:
 
-    ```bash
-    docker-compose up
+```
+docker-compose up
+```
 
-    ```
-
-    - To view the homepage, visit:
-      [http://localhost:8080/?homepage=true](http://localhost:8080/?homepage=true)
-    - For a welcome text, visit:
-      [http://localhost:8080/](http://localhost:8080/)
+-   To view the homepage, visit:
+    [http://localhost:8080/?homepage=true](http://localhost:8080/?homepage=true)
+-   For a welcome text, visit:
+    [http://localhost:8080/](http://localhost:8080/)
 
 ## Technologies Used
 
