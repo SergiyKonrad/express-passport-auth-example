@@ -16,6 +16,7 @@ dist-ssr/
 
 /.pnp
 .pnp.js
+
 # Local environment files
 .env
 .env.*
@@ -24,10 +25,17 @@ dist-ssr/
 # Production build
 /build
 
+# Docker files
+docker-compose.override.yml
+# Ignore override files with sensitive info
+docker-compose.prod.yml 
+# Ignore production-specific compose files if any
+
+
 # Editor directories and files
 .vscode/*
-#  Keeps the extensions.json for recommended VS Code extensions
 !.vscode/extensions.json 
+#  Keeps the extensions.json for recommended VS Code extensions
 .idea/
 .DS_Store
 *.suo

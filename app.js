@@ -3,16 +3,13 @@ const express = require('express')
 const session = require('express-session')
 const mongoose = require('mongoose')
 const passport = require('passport')
-const authRoutes = require('./routes/auth')
 const authMiddleware = require('./middleware/authMiddleware')
+const authRoutes = require('./routes/auth')
 const dataRoutes = require('./routes/data')
 const statisticsRoutes = require('./routes/statistics')
 const path = require('path')
 
 const app = express()
-
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')))
 
 // Middleware
 app.use(express.json())
@@ -44,8 +41,22 @@ app.use('/stats', statisticsRoutes)
 
 // Root Route
 app.get('/', (req, res) => {
-    res.send('Welcome to the Express-Passport App!')
+    const showHomepage = req.query.homepage === 'true'
+    // Add:  ?homepage=true  to URL to show index.html
+    if (showHomepage) {
+        res.sendFile(path.join(__dirname, 'public', 'index.html'))
+    } else {
+        res.send('Welcome to the Updated Express-Passport App!')
+    }
 })
+
+// Serve Static Files
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Serve Static Login Page
+// app.get('/login', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'login.html'))
+// })
 
 // Protected Route (use middleware)
 app.get('/protected', authMiddleware, (req, res) => {
@@ -65,6 +76,13 @@ mongoose
         )
     })
     .catch((err) => console.error('Database connection error:', err))
+
+// ------------ Example Testing Flow --------
+// Homepage (HTML): Visit
+//  http://localhost:8080/?homepage=true
+
+// Welcome Text: Visit
+//  http://localhost:8080/
 
 // ------------ Available Routes ------------
 

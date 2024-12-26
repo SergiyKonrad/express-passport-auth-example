@@ -1,0 +1,28 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '8080:3000' # Maps localhost:8080 to container port 3000
+        environment:
+            - SESSION_SECRET=${SESSION_SECRET}
+            - MONGO_URI=${MONGO_URI}
+        volumes:
+            - .:/app # Sync project files
+            - /app/node_modules # Ignore node_modules for better performance
+        command: npm run dev
+        restart: unless-stopped
+        depends_on:
+            - mongo # Ensure mongo starts before app
+
+    mongo: # Mongo service properly nested under "services"
+        image: mongo
+        container_name: mongodb_container
+        ports:
+            - '27017:27017' # Expose MongoDB's default port
+        volumes:
+            - mongo-data:/data/db # Persist MongoDB data locally
+
+volumes:
+    mongo-data: # Define a volume for MongoDB data
