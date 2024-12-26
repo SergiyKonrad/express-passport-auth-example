@@ -12,9 +12,9 @@ If you're running the application with Docker, the port mapping in the `docker-c
 
 **Note:** Ensure that Docker is running and the containers are started using the following command before accessing the app:
 
-    ```
-    docker-compose up
-    ```
+```
+docker-compose up
+```
 
 ### Dockerfile
 
@@ -92,11 +92,11 @@ docker-compose down
 
 4.  Create a `.env` file in the root directory and add the following variables:
 
-        ```
-        SESSION_SECRET=your-session-secret
-        MONGO_URI=your-mongodb-connection-string
-        PORT=8080
-        ```
+    ```
+    SESSION_SECRET=your-session-secret
+    MONGO_URI=your-mongodb-connection-string
+    PORT=8080
+    ```
 
 5.  Start the server:
     ```
@@ -386,17 +386,17 @@ docker-compose down
 
 1. **Visit the App in Your Browser**
 
-    - To view the homepage, visit:  
-      [http://localhost:8080/?homepage=true](http://localhost:8080/?homepage=true)
-    - For a welcome text, visit:  
-      [http://localhost:8080/](http://localhost:8080/)
-
-    **Note:** Ensure that Docker is running and the containers are started using the following command before accessing the app:
+**Note:** Ensure that Docker is running and the containers are started using the following command before accessing the app:
 
     ```bash
     docker-compose up
 
     ```
+
+    - To view the homepage, visit:
+      [http://localhost:8080/?homepage=true](http://localhost:8080/?homepage=true)
+    - For a welcome text, visit:
+      [http://localhost:8080/](http://localhost:8080/)
 
 ## Technologies Used
 
