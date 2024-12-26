@@ -4,7 +4,17 @@ This project is an **Express.js server** with user authentication functionality 
 
 ## Docker Support
 
-This project also includes a **Dockerfile** and a **docker-compose.yml** for containerized deployment.
+This project includes a **Dockerfile** and a **docker-compose.yml** for containerized deployment.
+
+## Docker Integration
+
+If you're running the application with Docker, the port mapping in the `docker-compose.yml` file ensures that the app is accessible on `http://localhost:8080`, even though it runs on port `3000` inside the container.
+
+**Note:** Ensure that Docker is running and the containers are started using the following command before accessing the app:
+
+    ```
+    docker-compose up
+    ```
 
 ### Dockerfile
 
@@ -42,7 +52,7 @@ docker-compose up
 docker-compose down
 ```
 
-## Features Express-Passport Auth Server:
+## Features:
 
 1. **User Registration**: Allows users to register with their email and password.
 2. **User Login**:
@@ -62,33 +72,33 @@ docker-compose down
 
 ## Installation
 
-1. Clone the repository:
+1.  Clone the repository:
 
     ```
     git clone https://github.com/SergiyKonrad/express-passport-auth-example.git
     ```
 
-2. Navigate to the project directory:
+2.  Navigate to the project directory:
 
     ```
     cd express-passport-auth-example
     ```
 
-3. Install dependencies:
+3.  Install dependencies:
 
     ```
     npm install
     ```
 
-4. Create a `.env` file in the root directory and add the following variables:
+4.  Create a `.env` file in the root directory and add the following variables:
 
-    ```
-    SESSION_SECRET=your-session-secret
-    MONGO_URI=your-mongodb-connection-string
-    PORT=8080
-    ```
+        ```
+        SESSION_SECRET=your-session-secret
+        MONGO_URI=your-mongodb-connection-string
+        PORT=8080
+        ```
 
-5. Start the server:
+5.  Start the server:
     ```
     npm start
     ```
@@ -374,23 +384,34 @@ docker-compose down
 
 ## Accessing the App
 
-1. Visit the homepage:  
-   [http://localhost:8080/](http://localhost:8080/)
+1. **Visit the App in Your Browser**
 
-2. Access the login page:
-    - **Static**: `/login.html`
-    - **Dynamic**: `/auth/login`
+    - To view the homepage, visit:  
+      [http://localhost:8080/?homepage=true](http://localhost:8080/?homepage=true)
+    - For a welcome text, visit:  
+      [http://localhost:8080/](http://localhost:8080/)
+
+    **Note:** Ensure that Docker is running and the containers are started using the following command before accessing the app:
+
+    ```bash
+    docker-compose up
+
+    ```
 
 ## Technologies Used
 
+-   **Docker**: Containerization
 -   **Node.js**: Runtime environment
 -   **Express.js**: Web framework
 -   **Passport.js**: Authentication middleware
 -   **MongoDB**: Database
 -   **Mongoose**: MongoDB ODM
 -   **bcryptjs**: Password hashing
--   **Docker**: Containerization
 
 ## License
 
 This project is licensed under the MIT License.
+
+```
+
+```
